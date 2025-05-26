@@ -23,10 +23,10 @@ class Hotel {
         return false;
     }
 
-    public boolean crearReserva(String nombreCliente, int numeroHabitacion) {
+    public boolean crearReserva(String nombreCliente, String cedula, int numeroHabitacion) {
         for (Habitacion h : habitaciones) {
             if (h.getNumero() == numeroHabitacion && h.estaDisponible()) {
-                Reserva nueva = new Reserva(nombreCliente, h);
+                Reserva nueva = new Reserva(nombreCliente,cedula, h);
                 reservas.add(nueva);
                 return true;
             }
@@ -34,10 +34,23 @@ class Hotel {
         return false;
     }
 
+    public void buscarHabitacionPorCedula(String cedula){
+        boolean existe = false;
+        for (Reserva r : reservas){
+            if (r.getCedula().equals(cedula)){
+                System.out.println("---Detalles de habitacion reservada---\nNombre del cliente: "+r.getNombreCliente()+"\nNumero de habitacion: "+r.getNumeroHabitacion());
+                existe = true;
+            }
+        }
+        if (!existe){
+            System.out.println("No se encontro una habitacion reservada con la cedula ingresada");
+        }
+    }
+
     public void mostrarReservas() {
         for (Reserva r : reservas) {
             System.out.println("Cliente: " + r.getNombreCliente() +
-                    " - Habitación: " + r.getNumeroHabitacion());
+                    "\nCedula: "+r.getCedula()+"\nHabitación: " + r.getNumeroHabitacion());
         }
     }
 }

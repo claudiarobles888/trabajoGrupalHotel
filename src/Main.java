@@ -11,7 +11,8 @@ public class Main {
             System.out.println("1. Crear nueva reserva");
             System.out.println("2. Consultar disponibilidad");
             System.out.println("3. Ver reservas");
-            System.out.println("4. Salir");
+            System.out.println("4. Buscar habitacion por cedula");
+            System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
 
@@ -21,10 +22,11 @@ public class Main {
                     scanner.nextLine();
                     String nombre = scanner.nextLine();
                     System.out.println("Ingrese la cedula del cliente: ");
+                    String cedula = scanner.nextLine();
                     System.out.print("Ingrese el número de la habitación: ");
                     int numReserva = scanner.nextInt();
 
-                    boolean reservada = hotel.crearReserva(nombre, numReserva);
+                    boolean reservada = hotel.crearReserva(nombre, cedula, numReserva);
                     if (reservada) {
                         System.out.println("Reserva creada exitosamente.");
                     } else {
@@ -45,7 +47,14 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.println("Saliendo del sistema.");
+                    System.out.println("Ingrese la cedula a buscar: ");
+                    scanner.nextLine();
+                    cedula = scanner.nextLine();
+                    hotel.buscarHabitacionPorCedula(cedula);
+                    break;
+
+                case 5:
+                    System.out.println("\nSaliendo del sistema...");
                     break;
 
                 default:
