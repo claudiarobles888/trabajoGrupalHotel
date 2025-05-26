@@ -58,7 +58,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Opción inválida.");
+                    System.out.println("Opción inválida");
             }
 
         } while (opcion != 4);
