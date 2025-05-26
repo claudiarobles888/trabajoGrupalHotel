@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Hotel hotel = new Hotel(5); // Hotel con 5 habitaciones
-
+        int continuar = 1;
         int opcion;
         do {
             System.out.println("\n--- MENÚ ---");
@@ -12,7 +12,6 @@ public class Main {
             System.out.println("2. Consultar disponibilidad");
             System.out.println("3. Ver reservas");
             System.out.println("4. Buscar habitacion por cedula");
-            System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
 
@@ -53,16 +52,21 @@ public class Main {
                     hotel.buscarHabitacionPorCedula(cedula);
                     break;
 
-                case 5:
-                    System.out.println("\nSaliendo del sistema...");
-                    break;
 
                 default:
                     System.out.println("Opción inválida");
             }
+            System.out.print("\nDesea realizar otra operación? (1.Sí / 2.No): ");
+            continuar = scanner.nextInt();
 
-        } while (opcion != 4);
+            while (continuar != 1 && continuar != 2) {
+                System.out.print("Opción inválida. Ingrese 1 para continuar o 2 para salir: ");
+                continuar = scanner.nextInt();
+            }
+
+        } while (continuar == 1);
 
         scanner.close();
+        System.out.println("\nSaliendo del programa...");
     }
 }
