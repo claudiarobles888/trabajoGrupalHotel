@@ -42,7 +42,11 @@ public class Main {
                     break;
 
                 case 3:
-                    hotel.mostrarReservas();
+                    if (!hotel.tieneReservas()){
+                        System.out.println("No hay reservas existentes en el sistema");
+                    } else {
+                        hotel.mostrarReservas();
+                    }
                     break;
 
                 case 4:

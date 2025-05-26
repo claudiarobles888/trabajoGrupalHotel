@@ -47,6 +47,10 @@ class Hotel {
         }
     }
 
+    public boolean tieneReservas(){
+        return !reservas.isEmpty();
+    }
+
     public void mostrarReservas() {
         for (Reserva r : reservas) {
             System.out.println("Cliente: " + r.getNombreCliente() +
